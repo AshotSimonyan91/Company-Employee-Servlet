@@ -17,10 +17,10 @@ import java.util.List;
 public class CreateCompanyServlet extends HttpServlet {
 
     private CompanyManager companyManager = new CompanyManager();
-    private List<String> countries = Arrays.asList("Armenai", "USA", "Russia", "France");
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        List<Company> countries = companyManager.getAll();
         req.setAttribute("countryList", countries);
         req.getRequestDispatcher("WEB-INF/createCompany.jsp").forward(req, resp);
     }
